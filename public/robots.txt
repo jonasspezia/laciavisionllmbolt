@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://laciavisionllm.com/sitemap.xml
+
+# Directories
+Disallow: /auth/
+Disallow: /dashboard/

@@ -1,0 +1,102 @@
+# Regras e Padrões do Projeto LaciaVisionLLM
+
+## Convenções de Código
+
+1. **Estrutura de Componentes**
+   - Cada componente em seu próprio arquivo
+   - Nomes de componentes em PascalCase
+   - Props tipadas com TypeScript
+   - Exportação como default para componentes principais
+
+2. **Estilização**
+   - Tailwind CSS para todos os estilos
+   - Classes no formato `className="..."` (não usar style={})
+   - Seguir ordem: layout → espaçamento → cores → outros
+   - Tokens de cor primário (#46c68f) e secundário (#15bcc6)
+
+3. **Estado e Efeitos**
+   - useEffect com dependências claras
+   - Custom hooks para lógica reutilizável
+   - Context API para estado global
+   - TanStack Query para estado de servidor
+
+4. **Nomenclatura**
+   - Variáveis e funções em camelCase
+   - Tipos e interfaces em PascalCase
+   - Constants em UPPER_SNAKE_CASE
+   - Arquivos de componentes em PascalCase
+
+## Padrões e Preferências
+
+1. **Tratamento de Erros**
+   - Toast notifications para feedback de usuário
+   - Console.error para logging detalhado
+   - try/catch em operações assíncronas
+   - Fallbacks visuais para estados de erro
+
+2. **Feedback Visual**
+   - Estados de loading em todos os botões de ação
+   - Skeletons durante carregamento de dados
+   - Animações sutis para transições
+   - Toast para confirmações e erros
+
+3. **Interação com Supabase**
+   - Sempre usar RLS policies no banco
+   - Encapsular chamadas em custom hooks
+   - useQuery para operações de leitura
+   - useMutation para operações de escrita
+
+4. **Integração com Gemini**
+   - Separar chamadas em Edge Functions
+   - Retry logic para chamadas instáveis
+   - Armazenar resultados no banco após processamento
+   - Otimizar prompts para melhor performance
+
+## Fluxos de Trabalho Específicos
+
+1. **Adição de Nova Feature**
+   - Identificar necessidades e requisitos
+   - Criar componentes necessários
+   - Implementar hooks para lógica de negócio
+   - Integrar com backend
+   - Adicionar testes e documentação
+
+2. **Refatoração de Código**
+   - Identificar código duplicado
+   - Extrair para componentes/hooks reutilizáveis
+   - Atualizar dependências
+   - Manter tipos atualizados
+   - Validar funcionalidade
+
+3. **Resolução de Bugs**
+   - Reproduzir o problema
+   - Identificar a causa raiz
+   - Implementar correção
+   - Adicionar testes para prevenir regressões
+   - Documentar a solução
+
+## Observações Importantes
+
+1. **Vídeos e Armazenamento**
+   - Vídeos armazenados no GCS, não no Supabase Storage
+   - Metadados armazenados no banco PostgreSQL
+   - Sempre verificar formato e tamanho antes do upload
+   - Limitar duração máxima recomendada para 10 minutos
+
+2. **Autenticação e Segurança**
+   - JWT para autenticação
+   - Roles: admin, institution_admin, professor, student
+   - Verificar permissões em cada operação sensível
+   - Não expor IDs sensíveis na URL
+
+3. **Performance**
+   - Lazy loading para rotas e componentes pesados
+   - Otimizar imagens e assets
+   - Throttle/debounce para eventos frequentes
+   - Evitar re-renders desnecessários
+
+4. **Responsividade**
+   - Design Mobile-first
+   - Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
+   - Testar em diferentes dispositivos
+   - Usar Flexbox e Grid para layouts
